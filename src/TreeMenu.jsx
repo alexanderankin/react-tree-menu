@@ -53,10 +53,11 @@ var TreeMenu = React.createClass({
 
     var props = this.props;
 
-    return (
-      <div className={props.classNamePrefix}>
-        {this._getTreeNodes()}
-      </div>);
+    return React.createElement(
+      "div",
+      { className: props.classNamePrefix },
+      this._getTreeNodes()
+    );
 
   },
 

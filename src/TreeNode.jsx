@@ -56,15 +56,14 @@ var TreeNode = React.createClass({
       expandIconClass: "",
       collapseIconClass: "",
       labelFactory: function (labelClassName, displayLabel) {
-        return <label className={labelClassName}>{displayLabel}</label>;
+        return React.createElement("label", { className: labelClassName }, displayLabel);
       },
       checkboxFactory: function (className, isChecked) {
-        return (
-          <input
-          className={className}
-          type="checkbox"
-          checked={isChecked}
-          onChange={noop}/>);
+        return React.createElement("input", {
+          className: className,
+          type: "checkbox",
+          checked: isChecked,
+          onChange: noop });
       }
     }
   },
@@ -82,21 +81,19 @@ var TreeNode = React.createClass({
       } else {
         collapseClassName += (this._isCollapsed() ? props.expandIconClass : props.collapseIconClass);
       }
-      collapseNode = <span onClick={collapseToggleHandler} className={collapseClassName}></span>
+      collapseNode = React.createElement("span", { onClick: collapseToggleHandler, className: collapseClassName });
     }
     return collapseNode;
   },
 
   render : function () {
-    return (
-      <div className={this._getRootCssClass()}>
-        {this._getCollapseNode()}
-        <span onClick={this._handleClick}>
-          {this._getCheckboxNode()}
-          {this._getLabelNode()}
-        </span>
-        {this._getChildrenNode()}
-      </div>
+    return React.createElement("div", { className: this._getRootCssClass() },
+      this._getCollapseNode(),
+      React.createElement("span", { onClick: this._handleClick },
+        this._getCheckboxNode(),
+        this._getLabelNode()
+      ),
+      this._getChildrenNode()
     );
   },
 
@@ -119,11 +116,9 @@ var TreeNode = React.createClass({
   },
 
   _getChildrenNode: function () {
-
-    var props = this.props;
-
     if (this._isCollapsed()) return null;
 
+    var props = this.props;
     var children = props.children;
 
     if (this._isStateful()) {
@@ -137,12 +132,11 @@ var TreeNode = React.createClass({
       });
     } 
 
-    return (
-      <div className={this._getRootCssClass() + "-children"}>
-          {children}
-      </div>
+    return React.createElement(
+      "div",
+      { className: this._getRootCssClass() + "-children" },
+      children
     );
-
   },
 
   _getLabelNode: function () {
