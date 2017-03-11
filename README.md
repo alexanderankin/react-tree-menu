@@ -295,9 +295,3 @@ This value is overridden by the `collapsible` prop value set on the root `<TreeM
 ### `collapsed={<Boolean>}`
 
 If the node is collapsible, whether or not the node is collapsed. Defaults to false.
-
-
-
-
-
-
