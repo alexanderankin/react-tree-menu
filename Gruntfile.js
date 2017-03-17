@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 
     browserify: {
       example : {
-        src: ['example/boot.jsx'],
+        src: ['example/Boot.jsx'],
         dest: 'example/bundle.js',
         options: {
           transform: ['reactify']
@@ -24,4 +24,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-browserify');
 
   grunt.registerTask('bundle-example', ['browserify:example']);
+  grunt.registerTask('default', ['bundle-example']);
 };

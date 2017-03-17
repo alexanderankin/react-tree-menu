@@ -1,5 +1,5 @@
 var React = require('react'),
-  TreeMenu = require('../index'),
+  TreeMenu = require('../index').TreeMenu,
   TreeNode = require('../index').TreeNode,
   TreeMenuUtils = require('../index').Utils,
   Immutable = require('immutable'),
